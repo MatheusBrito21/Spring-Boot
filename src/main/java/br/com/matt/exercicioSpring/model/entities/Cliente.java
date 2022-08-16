@@ -1,4 +1,4 @@
-package br.com.matt.exercicioSpring.model;
+package br.com.matt.exercicioSpring.model.entities;
 
 public class Cliente {
 	
