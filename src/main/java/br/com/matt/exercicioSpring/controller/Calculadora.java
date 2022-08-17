@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/calculadora")
 public class Calculadora {
 	
+	@GetMapping	
+	public String imprimirMensagem() {
+		return "Bem vindo à minha calculadora!";
+	}
+	
 	@GetMapping(path = "/soma/{a}/{b}")
 	public int soma(@PathVariable int a, @PathVariable int b) {
 		return a+b;

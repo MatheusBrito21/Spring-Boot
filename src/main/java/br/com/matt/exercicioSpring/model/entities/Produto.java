@@ -14,11 +14,9 @@ public class Produto {
 	private String nome;
 	
 	public Produto() {
-		super();
 	}
-	public Produto(int id, String nome) {
-		super();
-		this.id = id;
+	
+	public Produto(String nome) {
 		this.nome = nome;
 	}
 	public int getId() {
