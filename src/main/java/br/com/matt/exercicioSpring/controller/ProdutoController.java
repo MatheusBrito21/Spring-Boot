@@ -1,7 +1,13 @@
 package br.com.matt.exercicioSpring.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,10 +21,33 @@ public class ProdutoController {
 	@Autowired
 	ProdutoRepository produtoRepository;
 	
+	//Definindo dois metodos para o mesmo request
+	//TODO metodo PUT nao esta funcionando
 	@PostMapping
 	public Produto novoProduto(Produto produto) {
 		produtoRepository.save(produto);
 		return produto;
 	}
 	
+	@GetMapping
+	public Iterable<Produto> obterProdutos(){
+		return produtoRepository.findAll();
+	}
+	
+	@GetMapping(path = "/{id}")
+	public Optional<Produto> obterPorId(@PathVariable int id) {
+		return produtoRepository.findById(id);
+	}
+	
+	@DeleteMapping(path = "/{id}")
+	public void deletarPorId(@PathVariable int id) {
+		produtoRepository.deleteById(id);
+	}
+	
+	@PutMapping
+//	@RequestMapping(path = "/alterar")
+	public void alterarProduto(Produto produto) {
+		produtoRepository.save(produto);
+	}
+
 }
