@@ -21,9 +21,8 @@ public class ProdutoController {
 	@Autowired
 	ProdutoRepository produtoRepository;
 	
-	//Definindo dois metodos para o mesmo request
-	//TODO metodo PUT nao esta funcionando
 	@PostMapping
+	//@RequestMapping(method{RequestMapping.POST, RequestMapping.PUT})
 	public Produto novoProduto(Produto produto) {
 		produtoRepository.save(produto);
 		return produto;
@@ -45,9 +44,9 @@ public class ProdutoController {
 	}
 	
 	@PutMapping
-//	@RequestMapping(path = "/alterar")
-	public void alterarProduto(Produto produto) {
+	public Produto alterarProduto(Produto produto) {
 		produtoRepository.save(produto);
+		return produto;
 	}
 
 }
